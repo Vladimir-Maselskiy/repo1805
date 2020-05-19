@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Пример e-market</title>
+</head>
+<body>
+<h2>All Articles</h2>
+<table>
+    <block th:each="article : ${all_articles}">
+        <tr>
+            <td th:text="${article.id}"/>
+            <td th:text="${article.name}"/>
+            <td th:text="${article.description}"/>
+            <td th:text="${article.price}"/>
+            <td th:text="${article.quantity}"/>
+
+        </tr>
+    </block>
+</table>
+<form action="#" th:action="@{/article}" th:object="${articleParams}" method="get">
+    <p>Low Price:  <input type="number" th:field="*{lowPrice}"/></p>
+    <p>High Price:  <input type="number" th:field="*{highPrice}"/></p>
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+</form>
+</body>
+</html>
